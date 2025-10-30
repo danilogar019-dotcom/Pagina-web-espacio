@@ -19,10 +19,14 @@ Pagina LND/
 ├── js/
 │   └── script.js
 ├── img/
-│   └── (aquí van tus imágenes)
+
 
 HTML Validation:
 This project has been validated using official W3C tools to ensure compliance with web standards and code quality: W3C HTML Validator
 
 
 The page where I got the inspiration was: https://dribbble.com/tags/web
+
+
+Link
+http://127.0.0.1:5500/index.html

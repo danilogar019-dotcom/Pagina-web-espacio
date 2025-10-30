@@ -1,0 +1,374 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Tipografía espacial y altura extendida */
+html,
+body {
+    height: 100%;
+    min-height: 300vh;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-image: url(../img/astronaut-planet.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #e0e0e0;
+    line-height: 1.6;
+    font-size: 16px;
+    padding: 20px;
+}
+
+/* Menú hamburguesa a la izquierda */
+#menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+#menu-toggle {
+    background-color: #00bfff;
+    color: #0d0d0d;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#menu-options {
+    list-style: none;
+    margin-top: 10px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 8px;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    width: 160px;
+}
+
+#menu-options li {
+    margin: 8px 0;
+}
+
+#menu-options a {
+    color: #00bfff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#menu-options a:hover,
+#menu-options a:focus {
+    text-decoration: underline;
+    outline: 2px solid #00bfff;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Contenedor principal */
+#main-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Paneles */
+#main-container-item-left,
+#main-container-item-middle,
+#main-container-item-right {
+    flex: 1;
+    background-color: rgba(26, 26, 26, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Títulos */
+h2 {
+    margin-bottom: 10px;
+    color: #00bfff;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+/* Línea del tiempo */
+#main-container-item-left ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#main-container-item-left li {
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #00bfff;
+}
+
+/* Galería */
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+}
+
+.image-wrapper {
+    position: relative;
+}
+
+.image-wrapper::after {
+    content: attr(data-alt);
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background-color: rgba(0, 191, 255, 0.8);
+    color: #000;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.image-wrapper:hover::after {
+    opacity: 1;
+}
+
+.image-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+/* Botón */
+button {
+    background-color: #00bfff;
+    color: #0d0d0d;
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #0099cc;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Texto oculto */
+#extra-info {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #002233;
+    border-left: 4px solid #00bfff;
+    border-radius: 6px;
+}
+
+#extra-info.hidden {
+    display: none;
+}
+
+/* Contador de visitas */
+#contador {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00bfff;
+    margin-top: 10px;
+}
+
+/* Reloj */
+#reloj {
+    font-size: 16px;
+    margin-top: 10px;
+    color: #00ffff;
+}
+
+/* Formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+input,
+textarea {
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background-color: #222;
+    color: #fff;
+}
+
+input:focus,
+textarea:focus {
+    outline: 2px solid #00bfff;
+}
+
+/* Vídeo */
+iframe,
+video {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    margin-top: 10px;
+}
+
+/* Footer */
+#main-footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #aaaaaa;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons i {
+    margin: 0 8px;
+    font-size: 20px;
+    color: #00bfff;
+    transition: color 0.3s ease;
+}
+
+.social-icons i:hover {
+    color: #66ccff;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+
+/* Tablets */
+@media (max-width: 1024px) and (min-width: 768px) {
+    body {
+        font-size: 15px;
+        padding: 15px;
+    }
+
+    #main-container {
+        flex-direction: column;
+    }
+
+    .image-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #menu-options {
+        width: 180px;
+    }
+}
+
+/* Móviles grandes */
+@media (max-width: 767px) and (min-width: 600px) {
+    body {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    #main-container {
+        flex-direction: column;
+    }
+
+    .image-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #menu-options {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #main-container-item-left,
+    #main-container-item-middle,
+    #main-container-item-right {
+        margin-bottom: 20px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 599px) {
+    body {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    #main-container {
+        flex-direction: column;
+    }
+
+    .image-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    #menu-options {
+        width: 100%;
+        left: 0;
+        right: auto;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    h2,
+    h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    #main-footer {
+        font-size: 12px;
+    }
+
+    #main-container-item-left,
+    #main-container-item-middle,
+    #main-container-item-right {
+        margin-bottom: 20px;
+    }
+}

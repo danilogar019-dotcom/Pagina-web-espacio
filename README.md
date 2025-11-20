@@ -57,7 +57,3 @@ The project already includes:
 
 
 
-
-Would you like me to also add a **“How to Install and Run” section** in English (with commands and setup instructions), so it’s fully ready for GitHub?﻿# Pagina-web-2
-
-

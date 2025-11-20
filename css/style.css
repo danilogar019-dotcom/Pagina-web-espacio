@@ -1,0 +1,517 @@
+/* ===========================
+   Reset y base
+   =========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100vh;
+}
+
+html {
+  --bg-translate-y: 0px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  color: #e6f7ff;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 0;
+  background-color: #071023;
+  /* fallback sólido */
+}
+
+/* ===========================
+   Fondo global estable (pseudo-elemento)
+   =========================== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('../img/astronaut-planet.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  will-change: transform;
+  transform: translate3d(0, var(--bg-translate-y, 0px), 0) scale(1.01);
+  z-index: -2;
+  pointer-events: none;
+  transition: transform 120ms linear;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 6, 12, 0.52);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ===========================
+   Parallax layers (opcionales)
+   =========================== */
+.parallax-scene {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -3;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 0;
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  opacity: 0.98;
+}
+
+.parallax-layer.layer-back {
+  background-image: url('../img/stars.jpg');
+  z-index: -3;
+  filter: saturate(.9) brightness(.95);
+}
+
+.parallax-layer.layer-mid {
+  background-image: url('../img/planet.jpg');
+  z-index: -2;
+  filter: saturate(.95) brightness(.96);
+}
+
+.parallax-layer.layer-front {
+  background-image: url('../img/astronaut-planet.jpg');
+  z-index: -1;
+  filter: saturate(1) brightness(.98);
+}
+
+@media (max-width:800px) {
+  .parallax-layer {
+    height: 100vh;
+    background-attachment: scroll;
+    opacity: .95;
+  }
+}
+
+/* ===========================
+   Header / nav
+   =========================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1400;
+  background: transparent;
+  backdrop-filter: blur(6px);
+}
+
+.site-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1400;
+}
+
+.brand {
+  color: #00bfff;
+  text-decoration: none;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 700;
+}
+
+.brand i {
+  color: #88f0ff;
+  font-size: 18px;
+}
+
+/* Left-aligned hamburger */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  order: -1;
+}
+
+.menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid #00bfff;
+  color: #00bfff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1500;
+  transition: background 180ms ease;
+}
+
+.menu-toggle:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.menu-toggle i {
+  color: #00bfff;
+  font-size: 20px;
+}
+
+.hamburger-fallback {
+  display: inline-block;
+  width: 22px;
+  height: 16px;
+  position: relative;
+}
+
+.hamburger-fallback .bar {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #00bfff;
+  border-radius: 2px;
+  transition: transform 260ms cubic-bezier(.2, .9, .2, 1), opacity 180ms linear;
+}
+
+.hamburger-fallback .bar:nth-child(1) {
+  top: 0;
+}
+
+.hamburger-fallback .bar:nth-child(2) {
+  top: 7px;
+}
+
+.hamburger-fallback .bar:nth-child(3) {
+  bottom: 0;
+}
+
+.menu-toggle.open .hamburger-fallback .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.open .hamburger-fallback .bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu-toggle.open .hamburger-fallback .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===========================
+   Sliding panel left
+   =========================== */
+.menu-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 0;
+  max-width: 320px;
+  background: linear-gradient(180deg, rgba(2, 6, 12, 0.98), rgba(6, 12, 24, 0.98));
+  box-shadow: 20px 0 40px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  transition: width 320ms cubic-bezier(.2, .9, .2, 1);
+  z-index: 1450;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.menu-panel.open {
+  width: 280px;
+}
+
+.menu-close {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 28px;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.menu-list {
+  list-style: none;
+  margin-top: 12px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-list a {
+  color: #e6f7ff;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: block;
+}
+
+.menu-list a:hover {
+  background: rgba(0, 191, 255, 0.12);
+  color: #00e6ff;
+}
+
+@media (min-width:900px) {
+  .menu-panel.open~.main-container {
+    transform: translateX(280px);
+    transition: transform 320ms cubic-bezier(.2, .9, .2, 1);
+  }
+}
+
+/* ===========================
+   Main layout and general spacing
+   - center content area, add small left offset so nothing touches the left edge
+   =========================== */
+.main-container {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+  /* increase horizontal padding so content breathes */
+  position: relative;
+  z-index: 1400;
+  transition: transform 320ms cubic-bezier(.2, .9, .2, 1);
+}
+
+section {
+  background: rgba(0, 0, 0, 0.46);
+  padding: 20px;
+  /* slightly increased padding for breathing room */
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* ===========================
+   Products section: move slightly right, ensure inputs and labels visible
+   =========================== */
+#products-section {
+  padding-left: 18px;
+  /* move whole section content slightly right */
+  padding-right: 14px;
+  margin-left: 4px;
+  /* tiny extra offset so it doesn't touch left edge */
+}
+
+#products-section .products-form,
+#products-section #product-list {
+  margin-left: 10px;
+  /* internal offset */
+}
+
+/* Ensure labels and inputs have space and don't wrap oddly */
+.products-form label,
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  margin-left: 4px;
+  font-weight: 600;
+  color: #dff6ff;
+}
+
+.products-form input,
+.contact-form input,
+.contact-form textarea,
+.products-form input[type="number"] {
+  width: calc(100% - 12px);
+  /* account for small left margin/padding */
+  padding: 10px;
+  margin-left: 4px;
+  background: rgba(11, 22, 34, 0.62);
+  color: #e6f7ff;
+  border-radius: 6px;
+  border: none;
+  box-sizing: border-box;
+}
+
+/* If the section is narrow on small screens, keep a minimum left gap */
+@media (max-width:599px) {
+  #products-section {
+    padding-left: 12px;
+    margin-left: 0;
+  }
+
+  #products-section .products-form,
+  #products-section #product-list {
+    margin-left: 6px;
+  }
+}
+
+/* ===========================
+   Gallery
+   =========================== */
+.image-gallery {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.image-gallery figure {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.image-gallery img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+  transition: transform 300ms ease, filter 300ms ease;
+}
+
+.image-gallery img:hover {
+  transform: scale(1.06);
+  filter: brightness(1.12);
+}
+
+.image-gallery figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -44px;
+  background: rgba(0, 191, 255, 0.9);
+  color: #041025;
+  padding: 8px;
+  text-align: center;
+  font-weight: 700;
+  transition: bottom 220ms ease;
+}
+
+.image-gallery figure:hover figcaption {
+  bottom: 0;
+}
+
+/* ===========================
+   Contact section spacing (apply same subtle offset)
+   =========================== */
+#contact-section {
+  padding-left: 16px;
+  padding-right: 12px;
+}
+
+#contact-section .contact-form {
+  margin-left: 8px;
+}
+
+.field-error {
+  color: #ffb3b3;
+  min-height: 18px;
+  font-size: 0.94rem;
+}
+
+/* ===========================
+   Buttons and controls
+   =========================== */
+button,
+.action-button,
+.submit-button {
+  background: #00bfff;
+  color: #041025;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+button:hover {
+  transform: perspective(600px) rotateX(3deg) rotateY(-3deg);
+  box-shadow: 0 10px 20px rgba(0, 191, 255, 0.12);
+}
+
+/* ===========================
+   Footer and util
+   =========================== */
+.site-footer {
+  text-align: center;
+  padding: 18px;
+  color: #bcd;
+  margin-top: 20px;
+  z-index: 1400;
+}
+
+.scroll-extension {
+  height: 160vh;
+  background: transparent;
+}
+
+/* ===========================
+   Responsive rules
+   =========================== */
+@media (min-width:1025px) {
+  .main-container {
+    flex-direction: row;
+  }
+
+  .image-gallery {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width:600px) and (max-width:1024px) {
+  .main-container {
+    flex-direction: column;
+  }
+
+  .image-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width:599px) {
+  .main-container {
+    flex-direction: column;
+    padding: 0 14px;
+  }
+
+  .image-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-panel {
+    width: 0;
+  }
+
+  /* closed default */
+  .menu-panel.open {
+    width: 260px;
+  }
+
+  /* slightly smaller in mobile */
+  #products-section {
+    padding-left: 10px;
+  }
+
+  #products-section .products-form,
+  #products-section #product-list {
+    margin-left: 6px;
+  }
+
+  #contact-section {
+    padding-left: 10px;
+  }
+}

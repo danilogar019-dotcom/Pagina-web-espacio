@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Exploración espacial</title>
+    <meta name="description"
+        content="Proyecto responsive con galería, validación en JavaScript, CRUD con JSON y fondo parallax global." />
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/scripts.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body id="top">
+    <!-- HEADER -->
+    <header id="site-header" class="site-header" role="banner">
+        <nav id="site-nav" class="site-nav" aria-label="Principal">
+            <a href="#top" class="brand" aria-label="Inicio">
+                <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+                <span>Exploración espacial</span>
+            </a>
+
+            <div class="nav-controls">
+                <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
+                    aria-controls="menu-panel" type="button">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                    <span class="hamburger-fallback" aria-hidden="true"><span class="bar"></span><span
+                            class="bar"></span><span class="bar"></span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SLIDING PANEL (menu) -->
+    <aside id="menu-panel" class="menu-panel" role="menu" aria-hidden="true">
+        <button id="menu-close" class="menu-close" aria-label="Cerrar menú" type="button">&times;</button>
+        <ul class="menu-list" role="none">
+            <li role="none"><a role="menuitem" href="#missions-section">Misiones</a></li>
+            <li role="none"><a role="menuitem" href="#gallery-section">Galería</a></li>
+            <li role="none"><a role="menuitem" href="#interaction-section">Interacción</a></li>
+            <li role="none"><a role="menuitem" href="#products-section">Productos</a></li>
+            <li role="none"><a role="menuitem" href="#contact-section">Contacto</a></li>
+            <li role="none"><a role="menuitem" href="parallax.html">Parallax</a></li>
+
+        </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main id="main-container" class="main-container" role="main">
+        <section id="missions-section" class="missions-section" aria-labelledby="missions-title">
+            <h2 id="missions-title">Misiones espaciales</h2>
+            <p>Explora las misiones más importantes de la historia espacial.</p>
+            <ul class="missions-list">
+                <li><strong>1957:</strong> Lanzamiento del Sputnik 1</li>
+                <li><strong>1969:</strong> Apolo 11 llega a la Luna</li>
+                <li><strong>1998:</strong> Inicio de la Estación Espacial Internacional</li>
+                <li><strong>2021:</strong> Perseverance aterriza en Marte</li>
+            </ul>
+        </section>
+
+        <section id="gallery-section" class="gallery-section" aria-labelledby="gallery-title">
+            <h2 id="gallery-title">Galería</h2>
+            <p class="gallery-lead">Imágenes reales de misiones y escenas espaciales.</p>
+            <div class="image-gallery" aria-hidden="false">
+                <figure><img src="img/rocket-flying.jpg" alt="Cohete despegando desde la plataforma de lanzamiento">
+                    <figcaption>Despegue de cohete</figcaption>
+                </figure>
+                <figure><img src="img/earth-satellite.jpg" alt="Satélite en órbita alrededor de la Tierra">
+                    <figcaption>Satélite en órbita</figcaption>
+                </figure>
+                <figure><img src="img/far-planet.jpg" alt="Planeta lejano con atmósfera brillante">
+                    <figcaption>Planeta lejano</figcaption>
+                </figure>
+                <figure><img src="img/astronaut-planet.jpg" alt="Astronauta flotando frente a un planeta">
+                    <figcaption>Astronauta y planeta</figcaption>
+                </figure>
+                <figure><img src="img/astronaut-walking.jpg" alt="Astronauta caminando sobre superficie lunar">
+                    <figcaption>Paseo lunar</figcaption>
+                </figure>
+                <figure><img src="img/takeoff-platform.jpg" alt="Plataforma de lanzamiento iluminada al anochecer">
+                    <figcaption>Plataforma de lanzamiento</figcaption>
+                </figure>
+                <figure><img src="img/rocket-launch.jpg" alt="Despegue de cohete entre columnas de humo">
+                    <figcaption>Despegue</figcaption>
+                </figure>
+                <figure><img src="img/lunar-crater.jpg" alt="Cráter lunar visto de cerca">
+                    <figcaption>Cráter lunar</figcaption>
+                </figure>
+                <figure><img src="img/satellite-earth.jpg" alt="Satélite sobre América del Sur">
+                    <figcaption>Satélite sobre la Tierra</figcaption>
+                </figure>
+                <figure><img src="img/gas-planet.jpg" alt="Planeta gaseoso con bandas atmosféricas">
+                    <figcaption>Planeta gaseoso</figcaption>
+                </figure>
+            </div>
+
+            <h3 class="video-title">Vídeo destacado</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/w53gkojzvbI" title="DW Documentary" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="interaction-section" class="interaction-section" aria-labelledby="interaction-title">
+            <h2 id="interaction-title">Interacción</h2>
+            <button id="info-button" class="action-button" type="button"><i class="fa-solid fa-circle-info"
+                    aria-hidden="true"></i> Mostrar detalles</button>
+            <div id="extra-info" class="extra-info hidden" aria-live="polite"></div>
+
+            <h3>Frase del universo</h3>
+            <button id="phrase-button" class="action-button" type="button">Mostrar frase</button>
+
+            <h3>Contador de visitas</h3>
+            <p id="visit-counter" aria-live="polite">Visitas: 0</p>
+
+            <h3>Hora actual</h3>
+            <p id="clock" aria-live="polite">Hora actual: --:--:--</p>
+        </section>
+    </main>
+
+    <!-- PRODUCTS FORM -->
+    <section id="products-section" class="products-section" aria-labelledby="products-title">
+        <h2 id="products-title">Productos destacados</h2>
+        <ul id="product-list" class="product-list" aria-live="polite"></ul>
+
+        <form id="product-form" class="products-form" novalidate>
+            <label for="product-name">Nombre</label>
+            <input id="product-name" name="productName" type="text" autocomplete="off" required>
+            <small id="product-name-error" class="field-error" aria-live="polite"></small>
+
+            <label for="product-description">Descripción</label>
+            <input id="product-description" name="productDescription" type="text" autocomplete="off" required>
+            <small id="product-description-error" class="field-error" aria-live="polite"></small>
+
+            <label for="product-price">Precio (€)</label>
+            <input id="product-price" name="productPrice" type="number" step="0.01" min="0" required>
+            <small id="product-price-error" class="field-error" aria-live="polite"></small>
+
+            <button id="add-product" class="action-button" type="submit"><i class="fa-solid fa-plus"
+                    aria-hidden="true"></i> Añadir producto</button>
+        </form>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact-section" class="contact-section" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contáctanos</h2>
+        <form id="contact-form" class="contact-form" novalidate>
+            <label for="name">Nombre</label>
+            <input id="name" name="name" type="text" autocomplete="name">
+            <small id="name-error" class="field-error" aria-live="polite"></small>
+
+            <label for="email">Correo</label>
+            <input id="email" name="email" type="email" autocomplete="email">
+            <small id="email-error" class="field-error" aria-live="polite"></small>
+
+            <label for="phone">Teléfono</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel">
+            <small id="phone-error" class="field-error" aria-live="polite"></small>
+
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            <small id="message-error" class="field-error" aria-live="polite"></small>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-button"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                    Enviar</button>
+                <button id="save-name" type="button" class="submit-button">Guardar nombre</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="site-footer" class="site-footer" role="contentinfo">
+        <p>© 2025 Exploración espacial</p>
+    </footer>
+
+    <div id="scroll-extension" class="scroll-extension" aria-hidden="true"></div>
+</body>
+
+</html>

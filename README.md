@@ -55,12 +55,9 @@ The project already includes:
 
 ---
 
-##  License
-
-This project is licensed under the MIT License – see the [LICENSE.md](LICENSE.md) file for details.
-
 
 
 
 Would you like me to also add a **“How to Install and Run” section** in English (with commands and setup instructions), so it’s fully ready for GitHub?﻿# Pagina-web-2
+
 
